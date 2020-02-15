@@ -5,9 +5,9 @@ using CirclesWar.Data;
 
 namespace CirclesWar
 {
-    public class ConfigLoader : MonoBehaviour
+    public class ConfigLoader
     {
-		private void Awake()
+        public GameConfig GetConfig()
 		{
             var asset = Resources.Load<TextAsset>("GameConfig");
 
@@ -16,12 +16,14 @@ namespace CirclesWar
             if (configMap != null)
             {
                 var gameConfig = configMap.GameConfig;
-                Debug.Log("config load success");           
+                Debug.Log("config load success");
+                return gameConfig;
             }
             else
             {
                 Debug.LogError("config load error");
             }
+            return null;
 		}
 
         [Serializable]
