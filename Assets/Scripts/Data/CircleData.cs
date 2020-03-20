@@ -10,11 +10,23 @@ namespace CirclesWar.Data
         Vector2 speed;
         float radius;
         bool red;
+        bool alive;
 
         public CircleData(float radius, bool red)
         {
             this.radius = radius;
             this.red = red;
+            alive = true;
+        }
+
+        public bool IsAlive()
+        {
+            return alive;
+        }
+
+        public void Kill()
+        {
+            alive = false;
         }
 
         public bool IsSameColor(CircleData circle)
@@ -30,6 +42,11 @@ namespace CirclesWar.Data
         public float GetRadius()
         {
             return radius;
+        }
+
+        public void Shrink(float value)
+        {
+            radius -= value;
         }
 
         public Vector2 GetPosition()
@@ -55,6 +72,12 @@ namespace CirclesWar.Data
         public Vector2 GetSpeed()
         {
             return speed;
+        }
+
+        public void HitWithNormal(Vector2 normal)
+        {
+            var projection = Vector2.Dot(speed, normal) * normal * 2;
+            speed -= projection;
         }
 
         public void UpdatePosition(float deltaTime)

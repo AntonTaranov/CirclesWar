@@ -37,7 +37,7 @@ namespace CirclesWar {
 
             var generator = new CirclesGenerator(config.numUnitsToSpawn, config.unitSpawnMinRadius, config.unitSpawnMaxRadius);
 
-            simulator = new Simulator(config.gameAreaWidth, config.gameAreaHeight);
+            simulator = new Simulator(config.gameAreaWidth, config.gameAreaHeight, config.unitDestroyRadius);
 
             var container = new GameObject("Circles");
             circlesContainer = container.transform;
